@@ -50,9 +50,9 @@ write_to_log() {
 
 
 total_hours_used() {
-    printf "$YELLOW Total hours spent focused: $FIN"
-    awk -F ',' '{sum+=$2 * $3;} END{printf "%d", int(sum / 3600);}' $LOG
-    printf "h 🍅🤓\n"
+    printf "$YELLOW Total time spent focused: $FIN"
+    awk -F ',' '{sum+=$2 * $3;} END{hours=int(sum/3600); minutes=int((sum%3600)/60); seconds=int(sum%60); printf "%dh:%dm:%ds", hours, minutes, seconds;}' $LOG
+    printf " 🍅🤓\n"
 }
 
 
